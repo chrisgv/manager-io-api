@@ -18,24 +18,19 @@ class Business {
 	}
 	
 	public function add($object = []) {
-		/*
 		$this->client->request('POST',$this->defaultKeys[get_class($object)],[
 			'json' => ['Name' => 'Sample Man']
 		]);
-		*/
-		$this->client->request('POST',$this->defaultKeys['Customer'],[
+	}
+	
+	public function edit($object = []) {
+		$this->client->request('PUT',$this->defaultKeys[get_class($object)],[
 			'json' => ['Name' => 'Sample Man']
 		]);
-		
-		return $this->client;
 	}
 	
-	public function edit() {
-		
-	}
-	
-	public function delete() {
-		
+	public function delete($object = []) {
+		$this->client->request('DELETE','');
 	}
 	
 }
