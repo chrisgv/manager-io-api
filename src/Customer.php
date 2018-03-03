@@ -2,8 +2,6 @@
 
 namespace ManagerIO;
 
-use GuzzleHttp\Client;
-
 class Customer {
 	private $name;							//string
 	private $billingAddress; 				//string
@@ -18,7 +16,7 @@ class Customer {
 	//Constructors parameter keys are CASE-SENSITIVE
 	public function __construct($data = []) {
 		foreach($data as $key => $val) {
-			//Preprend "set" to the array key to match setter method
+			//Prepend "set" to the array key to match setter method
 			$method = 'set' . $key;
 			if(method_exists($this,$method)) {
 				//Set property if a setter method is found

@@ -2,7 +2,9 @@
 
 namespace ManagerIO;
 
-class Client {
+use GuzzleHttp\Client;
+
+class Business {
 	
 	//Base URL of where manager.io is
 	private $host;
@@ -11,7 +13,7 @@ class Client {
 	private $businessKey;
 	
 	//ManagerIO generates this keys, it doesn't change
-	private $defautlKeys = [
+	private $defaultKeys = [
 		'Customer' => 'ec37c11e-2b67-49c6-8a58-6eccb7dd75ee'
 	];
 	
