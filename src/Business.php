@@ -2,31 +2,32 @@
 
 namespace ManagerIO;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as GuzzleClient;
 
-class Business {
-	
-	//Base URL of where manager.io is
-	private $host;
-	private $username;
-	private $password;
-	private $businessKey;
-	
+class Business {	
 	//ManagerIO generates this keys, it doesn't change
 	private $defaultKeys = [
 		'Customer' => 'ec37c11e-2b67-49c6-8a58-6eccb7dd75ee'
 	];
 	
 	public function __construct($host,$username,$password,$businessKey) {
-		$this->host = $host;
-		$this->username = $username;
-		$this->password = $password;
-		$this->businessKey = $businessKey;
+		$this->client = new GuzzleClient([
+			'base_uri' => $host.$businessKey.'/',
+			'auth' => [$username,$password]
+		]);
 	}
 	
-	
-	public function add() {
-
+	public function add($object = []) {
+		/*
+		$this->client->request('POST',$this->defaultKeys[get_class($object)],[
+			'json' => ['Name' => 'Sample Man']
+		]);
+		*/
+		$this->client->request('POST',$this->defaultKeys['Customer'],[
+			'json' => ['Name' => 'Sample Man']
+		]);
+		
+		return $this->client;
 	}
 	
 	public function edit() {
