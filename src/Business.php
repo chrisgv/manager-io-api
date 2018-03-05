@@ -30,7 +30,7 @@ class Business {
 	}
 	
 	/**
-	* @param string $id
+	* @param string $id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 	*
 	* @return json
 	*/
@@ -62,6 +62,7 @@ class Business {
 	public function add($object) {
 		try {
 			
+			/** @var string Gets the class name withour namespace */
 			$classname = (new \ReflectionClass($object))->getShortName();
 			$response = $this->client->request('POST',$this->defaultKeys[$classname],[
 				'json' => $object->get()
@@ -83,7 +84,7 @@ class Business {
 	
 	
 	/**
-	* @param string $id
+	* @param string $id     XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 	* @param object $object
 	*/
 	public function edit($id,$object) {
@@ -109,7 +110,7 @@ class Business {
 	}
 	
 	/**
-	* @param string $id
+	* @param string $id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 	*/
 	public function delete($id) {
 		try {
