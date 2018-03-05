@@ -25,7 +25,7 @@ class Customer {
 		}
 	}
 	
-	public function json() {
+	public function get() {
 		$properties = get_object_vars($this);
 		foreach($properties as $property => $value) {
 			if(isset($properties[$property])) {
@@ -33,7 +33,7 @@ class Customer {
 			}
 			unset($properties[$property]);
 		}
-		return json_encode($properties);
+		return $properties;
 	}
 	
 	//Setter and Getter Methods
