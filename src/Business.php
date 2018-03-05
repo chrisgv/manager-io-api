@@ -18,7 +18,8 @@ class Business {
 	}
 	
 	public function add($object) {
-		$this->client->request('POST',$this->defaultKeys[get_class($object)],[
+		$classname = (new \ReflectionClass($object))->getShortName();
+		$this->client->request('POST',$this->defaultKeys[$classname],[
 			'json' => $object->get()
 		]);
 	}
