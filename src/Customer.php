@@ -25,6 +25,17 @@ class Customer {
 		}
 	}
 	
+	public function json() {
+		$properties = get_object_vars($this);
+		foreach($properties as $property => $value) {
+			if(isset($properties[$property])) {
+				$properties[ucfirst($property)] = $value;
+			}
+			unset($properties[$property]);
+		}
+		return json_encode($properties);
+	}
+	
 	//Setter and Getter Methods
 	
 	public function getName(){
