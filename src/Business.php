@@ -57,15 +57,14 @@ class Business {
 	}
 	
 	/**
-	* @param object $object
+	* @param string $id  XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+	* @param array $data
 	*/
-	public function add($object) {
+	public function add($id,$data) {
 		try {
 			
-			/** @var string Gets the class name withour namespace */
-			$classname = (new \ReflectionClass($object))->getShortName();
-			$response = $this->client->request('POST',$this->defaultKeys[$classname],[
-				'json' => $object->get()
+			$response = $this->client->request('POST',$id,[
+				'json' => $data
 			]);
 		
 		} catch(ClientException $e) {
@@ -84,14 +83,14 @@ class Business {
 	
 	
 	/**
-	* @param string $id     XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-	* @param object $object
+	* @param string $id  XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+	* @param array $data
 	*/
-	public function edit($id,$object) {
+	public function edit($id,$data) {
 		try {
 			
 			$response = $this->client->request('PUT',$id,[
-				'json' => $object->get()
+				'json' => $data
 			]);
 		
 		} catch(ClientException $e) {
