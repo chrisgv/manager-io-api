@@ -189,7 +189,7 @@ class Business
 	/**
 	* @param string $id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 	*
-	* @return json
+	* @return array
 	*/
 	public function all($id)
 	{
