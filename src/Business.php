@@ -15,6 +15,9 @@ class Business
 		'Customer' => 'ec37c11e-2b67-49c6-8a58-6eccb7dd75ee'
 	];
 	
+	/** @var string ID of last inserted value */
+	private $last;
+	
 	/**
 	* @param string $host        https://domain.com/api/
 	* @param string $username    Username in managerIO
@@ -34,7 +37,7 @@ class Business
 	/**
 	* @param string $id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 	*
-	* @return json
+	* @return array
 	*/
 	public function view($id)
 	{
@@ -43,8 +46,11 @@ class Business
 			
 			$response = $this->client->request('GET',$id.'.json');
 			
-			//Returns data in JSON format
-			return (string)$response->getBody();
+			//Returns data in array format
+			return json_decode(
+				(string)$response->getBody(),
+				true
+			);
 		
 		}
 		catch(ClientException $e)
@@ -76,13 +82,26 @@ class Business
 	{
 		try
 		{
+			//Get category list
+			$old = $this->all($id);
 			
 			$response = $this->client->request('POST',$id,[
 				'json' => $data
 			]);
 			
-			//Return generated ID of last insert
-			return $this->last($id);
+			//Get category list after insert
+			$new = $this->all($id);
+			
+			$old = array_flip($old);
+			$new = array_flip($new);
+			
+			$id = array_diff_key($new,$old);
+			
+			$this->last = array_keys($id)[0];
+			
+			//return the generated ID of the last inserted data
+			return $this->last;
+
 		}
 		catch(ClientException $e)
 		{
@@ -178,17 +197,11 @@ class Business
 	}
 	
 	/**
-	* @param string $id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-	*
 	* @return string
 	*/
-	public function last($id)
+	public function last()
 	{
-		$json = $this->all($id);
-		
-		$list = json_decode($json,true);
-		
-		return end($list);
+		return $this->last;
 	}
 	
 	/**
