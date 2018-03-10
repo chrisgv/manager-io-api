@@ -1,1 +1,1 @@
-# PHP API for Manager.IO
+#  Manager.IO PHP API
