@@ -8,6 +8,7 @@
 
 ### Class Methods
 
+
   __all(Category ID)__ : Returns all ID of entities in category.
   
   __add(Category ID, Data Array)__ : Adds data then returns the ID of inserted entity.
