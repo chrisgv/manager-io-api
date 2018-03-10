@@ -1,12 +1,14 @@
-#  Manager.IO PHP API
+#  Manager.IO PHP API #
 
-### Install Using Composer
+### Install Using Composer ###
 
   `composer require chrisgv/manager-io-api`
   
+  Business(Host,Username,Password,Business ID)
+  
   `new Business(http://yourHost/api/,Username,Password,XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX)`
 
-### Class Methods
+### Class Methods ###
 
 
   __all(Category ID)__ : Returns all ID of entities in category.
