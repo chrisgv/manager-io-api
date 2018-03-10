@@ -2,16 +2,18 @@
     "name": "chrisgv/manager-io-api",
     "description": "PHP API for ManagerIO",
     "type": "api",
-    "require": {
-        "guzzlehttp/guzzle": "^6.3"
-    },
-    "license": "MIT",
+	"keywords": ["managerio"],
+	"homepage": "https://github.com/Seldaek/monolog",
+	"license": "MIT",
     "authors": [
         {
             "name": "Christofferson Viray",
             "email": "christoffersonviray@gmail.com"
         }
     ],
+	 "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
 	"autoload": {
 		"psr-4": {
 			"ManagerIO\\" : "src/"
