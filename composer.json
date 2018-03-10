@@ -3,7 +3,7 @@
     "description": "PHP API for ManagerIO",
     "type": "api",
 	"keywords": ["managerio"],
-	"homepage": "https://github.com/Seldaek/monolog",
+	"homepage": "https://github.com/chrisgv/manager-io-api",
 	"license": "MIT",
     "authors": [
         {
