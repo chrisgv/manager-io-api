@@ -1,6 +1,6 @@
 {
     "name": "chrisgv/manager-io-api",
-    "description": "PHP API for ManagerIO",
+    "description": "Manager.IO PHP API",
     "type": "api",
 	"keywords": ["managerio"],
 	"homepage": "https://github.com/chrisgv/manager-io-api",
