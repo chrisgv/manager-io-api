@@ -211,7 +211,9 @@ class Business
 		if( !isset($this->currencies)) {
 			$this->currencies = json_decode(file_get_contents(__dir__.'/currencies.json'),true);
 		}
-		return $this->currencies[$symbol];
+		return $this->currencies[
+			strtoupper($symbol)
+		];
 	}
 	
 	/**
