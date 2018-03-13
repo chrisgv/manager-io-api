@@ -10,10 +10,8 @@ use GuzzleHttp\Exception\TooManyRedirectsException;
 
 class Business
 {
-	/** @var array Generated IDs of categories */
-	private $defaultKeys = [
-		'Customer' => 'ec37c11e-2b67-49c6-8a58-6eccb7dd75ee'
-	];
+	/** @var array Generated IDs of currencies */
+	private $currencies;
 	
 	/** @var string ID of last inserted value */
 	private $last;
@@ -202,6 +200,18 @@ class Business
 	public function last()
 	{
 		return $this->last;
+	}
+	
+	/**
+	* @param string $symbol 'USD'
+	*
+	* @return string XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+	*/
+	public function currency($symbol) {
+		if( !isset($this->currencies)) {
+			$this->currencies = json_decode(file_get_contents(__dir__.'/currencies.json'),true);
+		}
+		return $this->currencies[$symbol];
 	}
 	
 	/**
